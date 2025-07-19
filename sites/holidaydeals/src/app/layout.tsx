@@ -1,6 +1,7 @@
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
-import { Header, Footer } from "@travel-platform/ui-components";
+import Header from "@/components/Layout/Header";
+import Footer from "@/components/Layout/Footer";
 import { ThemeProvider } from "next-themes";
 import ScrollToTop from '@/components/ScrollToTop';
 import Aoscompo from "@/utils/aos";
@@ -28,15 +29,10 @@ export default function RootLayout({
           defaultTheme="system"
         >
           <Aoscompo>
-            <Header variant="default" logoText="Holiday Deals" />
+            <Header />
             <NextTopLoader color="#2F73F2" />
             {children}
-            <Footer 
-              variant="default" 
-              logoText="Holiday Deals" 
-              contactEmail="info@holidaydeals.com"
-              companyName="Holiday Deals"
-            />
+            <Footer />
           </Aoscompo>
           <ScrollToTop />
         </ThemeProvider>

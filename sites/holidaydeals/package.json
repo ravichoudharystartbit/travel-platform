@@ -1,17 +1,14 @@
 {
-  "name": "holidaydeals-site",
-  "version": "1.0.0",
+  "name": "avenue_project",
+  "version": "1.0.1",
   "private": true,
-  "description": "Holiday Deals Travel Site",
   "scripts": {
-    "dev": "next dev --port 3001",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start --port 3001",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@travel-platform/ui-components": "workspace:*",
-    "@travel-platform/shared-utils": "workspace:*",
     "@iconify/icons-ion": "^1.2.10",
     "@iconify/react": "^5.0.1",
     "aos": "^2.3.4",
