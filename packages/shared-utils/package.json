@@ -6,8 +6,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "dev": "npx --package=typescript@5.0.0 tsc --watch",
-    "build": "npx --package=typescript@5.0.0 tsc --project tsconfig.json",
+    "dev": "npx --package=typescript@latest tsc --watch",
+    "build": "npx --package=typescript@latest tsc --project tsconfig.json",
     "clean": "rm -rf dist",
     "lint": "eslint src --ext .ts,.tsx"
   },
