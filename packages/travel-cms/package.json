@@ -17,8 +17,8 @@
   },
   "dependencies": {
     "@payloadcms/bundler-webpack": "^1.0.7",
-    "@payloadcms/db-postgres": "^1.0.7",
-    "@payloadcms/richtext-slate": "^2.0.0",
+    "@payloadcms/db-postgres": "^3.48.0",
+    "@payloadcms/richtext-slate": "^3.48.0",
     "@payloadcms/next-payload": "^0.1.11",
     "dotenv": "^16.0.0",
     "payload": "^2.0.0",
