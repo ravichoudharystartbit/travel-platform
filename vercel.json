@@ -1,6 +1,5 @@
 {
     "buildCommand": "pnpm run build",
     "outputDirectory": "sites/travel-cms/.next",
-    "installCommand": "pnpm install",
-    "ignoreCommand": "git diff --quiet HEAD^ HEAD ./sites/travel-cms"
+    "installCommand": "pnpm install"
   }
