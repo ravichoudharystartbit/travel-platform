@@ -36,4 +36,10 @@ export default buildConfig({
     'http://localhost:3000',
   ].filter(Boolean) as string[],
   plugins: [],
+  // Enable GraphQL API
+  graphQL: {
+    schemaOutputFile: path.resolve(__dirname, 'generated-schema.graphql'),
+  },
+  // Enable debugging in development
+  debug: process.env.NODE_ENV === 'development',
 });
