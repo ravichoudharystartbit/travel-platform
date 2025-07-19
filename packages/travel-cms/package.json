@@ -10,9 +10,9 @@
   ],
   "scripts": {
     "dev": "cross-env NODE_ENV=development ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "tsc",
+    "build": "pnpm exec tsc",
     "clean": "rimraf dist",
-    "type-check": "tsc --noEmit",
+    "type-check": "pnpm exec tsc --noEmit",
     "generate:types": "payload generate:types"
   },
   "dependencies": {
