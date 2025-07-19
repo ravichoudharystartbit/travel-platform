@@ -1,25 +1,26 @@
-{
-  "name": "@travel-platform/shared-utils",
-  "version": "1.0.0",
-  "private": true,
-  "description": "Shared utilities, types, and hooks for travel platform",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "dev": "tsc --watch",
-    "build": "pnpm exec tsc --project tsconfig.json",
-    "next": "^15.1.1",
-    "react": "^19.0.0"
+﻿{
+  \"name\": \"@travel-platform/shared-utils\",
+  \"version\": \"1.0.0\",
+  \"private\": true,
+  \"description\": \"Shared utilities, types, and hooks for travel platform\",
+  \"main\": \"dist/index.js\",
+  \"types\": \"dist/index.d.ts\",
+  \"scripts\": {
+    \"dev\": \"tsc --watch\",
+    \"build\": \"tsc --project tsconfig.json\",
+    \"clean\": \"rm -rf dist\",
+    \"lint\": \"eslint src --ext .ts,.tsx\"
   },
-  "dependencies": {
-    "typescript": "^5.0.0"
+  \"dependencies\": {
+    \"next\": \"^15.1.1\",
+    \"react\": \"^19.0.0\"
   },
-  "devDependencies": {
-    "@types/react": "^18",
-    "typescript": "^5.0.0"
+  \"devDependencies\": {
+    \"@types/react\": \"^18\",
+    \"typescript\": \"^5.8.3\"
   },
-  "peerDependencies": {
-    "next": ">=14.0.0",
-    "react": ">=18.0.0"
+  \"peerDependencies\": {
+    \"next\": \">=14.0.0\",
+    \"react\": \">=18.0.0\"
   }
 }
