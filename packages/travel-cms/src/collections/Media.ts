@@ -1,12 +1,9 @@
-﻿import { CollectionConfig } from 'payload/types';
+import { CollectionConfig } from 'payload/types';
 
-export const Media: CollectionConfig = {
+const Media: CollectionConfig = {
   slug: 'media',
-  access: {
-    read: () => true,
-    create: () => true,
-    update: () => true,
-    delete: () => true,
+  admin: {
+    useAsTitle: 'filename',
   },
   upload: {
     staticURL: '/media',
@@ -16,19 +13,13 @@ export const Media: CollectionConfig = {
         name: 'thumbnail',
         width: 400,
         height: 300,
-        position: 'center',
+        position: 'centre',
       },
       {
         name: 'card',
         width: 768,
         height: 1024,
-        position: 'center',
-      },
-      {
-        name: 'desktop',
-        width: 1920,
-        height: 1080,
-        position: 'center',
+        position: 'centre',
       },
     ],
     adminThumbnail: 'thumbnail',
@@ -38,15 +29,6 @@ export const Media: CollectionConfig = {
     {
       name: 'alt',
       type: 'text',
-      required: true,
-    },
-    {
-      name: 'caption',
-      type: 'richText',
-      admin: {
-        elements: ['link'],
-        leaves: ['bold', 'italic', 'underline'],
-      },
     },
   ],
 };
