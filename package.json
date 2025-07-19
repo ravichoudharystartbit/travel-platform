@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "cd packages/shared-utils && pnpm add -D typescript && pnpm build && cd ../.. && pnpm -r build",
+    "build": "cd packages/shared-utils && pnpm add -D typescript@latest && cd ../.. && pnpm -r --filter=@travel-platform/shared-utils build && pnpm -r --filter=@travel-platform/travel-cms build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
