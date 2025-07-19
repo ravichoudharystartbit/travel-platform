@@ -24,7 +24,7 @@ const start = async () => {
         },
       }),
       onInit: async (payload) => {
-        payload.logger.info(Payload Admin URL: );
+        payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
       },
     });
 
@@ -40,7 +40,7 @@ const start = async () => {
     }
 
     app.listen(PORT, () => {
-      payload.logger.info(Server is running on port );
+      payload.logger.info(`Server is running on port ${PORT}`);
     });
   } catch (err) {
     console.error('Error starting server:', err);
