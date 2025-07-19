@@ -129,3 +129,5 @@ yarn.lock
 *.sketch
 *.psd
 *.ai
+
+.vercel
