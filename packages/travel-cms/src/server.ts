@@ -1,36 +1,47 @@
-import { CollectionConfig } from 'payload/types';
+import { buildConfig } from 'payload/config';
+import { postgresAdapter } from '@payloadcms/db-postgres';
+import { slateEditor } from '@payloadcms/richtext-slate';
+import { webpackBundler } from '@payloadcms/bundler-webpack';
 
-const Media: CollectionConfig = {
-  slug: 'media',
+export default buildConfig({
   admin: {
-    useAsTitle: 'filename',
+    user: 'users',
+    bundler: webpackBundler(),
   },
-  upload: {
-    staticURL: '/media',
-    staticDir: 'media',
-    imageSizes: [
-      {
-        name: 'thumbnail',
-        width: 400,
-        height: 300,
-        position: 'centre',
-      },
-      {
-        name: 'card',
-        width: 768,
-        height: 1024,
-        position: 'centre',
-      },
-    ],
-    adminThumbnail: 'thumbnail',
-    mimeTypes: ['image/*'],
-  },
-  fields: [
+  editor: slateEditor({}),
+  collections: [
+    // Your collections will go here
     {
-      name: 'alt',
-      type: 'text',
+      slug: 'users',
+      auth: true,
+      fields: [
+        {
+          name: 'name',
+          type: 'text',
+        },
+      ],
+    },
+    {
+      slug: 'pages',
+      fields: [
+        {
+          name: 'title',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'content',
+          type: 'richText',
+        },
+      ],
     },
   ],
-};
-
-export default Media;
+  db: postgresAdapter({
+    pool: {
+      connectionString: process.env.DATABASE_URI,
+    },
+  }),
+  typescript: {
+    outputFile: './types/generated-types.ts',
+  },
+});
