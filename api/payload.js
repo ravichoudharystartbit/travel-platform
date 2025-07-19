@@ -1,24 +1,20 @@
 // Vercel serverless function for Payload CMS
-const express = require('express');
 const payload = require('payload');
 
-const app = express();
-
-let isInitialized = false;
-
-const start = async () => {
-  if (!isInitialized) {
+module.exports = async (req, res) => {
+  // Initialize Payload if not already done
+  if (!payload.isInitialized) {
     await payload.init({
       secret: process.env.PAYLOAD_SECRET,
-      express: app,
+      mongoURL: process.env.DATABASE_URI,
+      express: false, // Important for serverless
       onInit: () => {
-        payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
-        isInitialized = true;
+        console.log('Payload initialized successfully');
       },
     });
   }
-  
-  return app;
-};
 
-module.exports = start;
+  // Get the handler from Payload
+  const handler = await payload.getRequestHandler();
+  return handler(req, res);
+};
