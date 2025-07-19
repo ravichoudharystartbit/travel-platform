@@ -1,16 +1,17 @@
 {
   "name": "travel-platform",
-  "version": "1.0.0",
+  "version": "1.0.0", 
   "private": true,
   "scripts": {
-    "build": "pnpm --filter=@travel-platform/shared-utils run build && pnpm --filter=travel-cms run build",    "dev": "turbo run dev --parallel",
+    "build": "pnpm --filter=@travel-platform/shared-utils run build && pnpm --filter=@travel-platform/travel-cms run build",
+    "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "echo Skipping husky install in CI"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
-    "@types/react": "^18.2.0",
+    "@types/react": "^18.2.0", 
     "@types/react-dom": "^18.2.0",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",

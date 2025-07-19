@@ -1,5 +1,11 @@
 {
     "buildCommand": "pnpm run build",
-    "outputDirectory": "packages/travel-cms/.next", 
-    "installCommand": "pnpm install"
+    "outputDirectory": "packages/travel-cms/dist", 
+    "installCommand": "pnpm install",
+    "rewrites": [
+      {
+        "source": "/(.*)",
+        "destination": "/api/payload"
+      }
+    ]
   }
