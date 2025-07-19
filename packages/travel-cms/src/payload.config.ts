@@ -41,7 +41,6 @@ export default buildConfig({
       connectionString: process.env.DATABASE_URI,
     },
   }),
-  secret: process.env.PAYLOAD_SECRET || 'dev-secret',
   typescript: {
     outputFile: './types/generated-types.ts',
   },
