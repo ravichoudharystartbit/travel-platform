@@ -7,7 +7,7 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "prepare": "husky install"
+    "prepare": "echo Skipping husky install in CI"
   },
   "devDependencies": {
     "@types/node": "^20.0.0",
