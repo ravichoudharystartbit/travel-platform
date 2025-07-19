@@ -4,11 +4,11 @@ import { postgresAdapter } from '@payloadcms/db-postgres';
 import { slateEditor } from '@payloadcms/richtext-slate';
 import path from 'path';
 
-// Collections
-import { Users } from './collections/Users';
-import { Media } from './collections/Media';
-import { Tours } from './collections/Tours';
-import { Destinations } from './collections/Destinations';
+// Collections - using default imports
+import Users from './collections/Users';
+import Media from './collections/Media';
+import Tours from './collections/Tours';
+import Destinations from './collections/Destinations';
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 'http://localhost:3000',
