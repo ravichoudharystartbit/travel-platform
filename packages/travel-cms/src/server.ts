@@ -1,51 +1,36 @@
-﻿import express from 'express';
-import { getPayload } from 'payload';
-import { config } from 'dotenv';
-import { seed } from './seed';
-import { postgresAdapter } from '@payloadcms/db-postgres';
+import { CollectionConfig } from 'payload/types';
 
-// Load environment variables
-config({
-  path: '../../../.env',
-});
-
-const app = express();
-const PORT = process.env.PORT || 3000;
-
-const start = async () => {
-  try {
-    // Initialize Payload with PostgreSQL
-    const payload = await getPayload({
-      secret: process.env.PAYLOAD_SECRET || 'dev-secret',
-      express: app,
-      db: postgresAdapter({
-        pool: {
-          connectionString: process.env.DATABASE_URI,
-        },
-      }),
-      onInit: async (payload) => {
-        payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
+const Media: CollectionConfig = {
+  slug: 'media',
+  admin: {
+    useAsTitle: 'filename',
+  },
+  upload: {
+    staticURL: '/media',
+    staticDir: 'media',
+    imageSizes: [
+      {
+        name: 'thumbnail',
+        width: 400,
+        height: 300,
+        position: 'centre',
       },
-    });
-
-    // Add your own express routes here
-    app.get('/', (_, res) => {
-      res.redirect('/admin');
-    });
-
-    // Seed database with initial data if needed
-    if (process.env.PAYLOAD_SEED === 'true') {
-      await seed(payload);
-      process.exit();
-    }
-
-    app.listen(PORT, () => {
-      payload.logger.info(`Server is running on port ${PORT}`);
-    });
-  } catch (err) {
-    console.error('Error starting server:', err);
-    process.exit(1);
-  }
+      {
+        name: 'card',
+        width: 768,
+        height: 1024,
+        position: 'centre',
+      },
+    ],
+    adminThumbnail: 'thumbnail',
+    mimeTypes: ['image/*'],
+  },
+  fields: [
+    {
+      name: 'alt',
+      type: 'text',
+    },
+  ],
 };
 
-start();
+export default Media;
