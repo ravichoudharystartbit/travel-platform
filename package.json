@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "pnpm install typescript@5.0.0 -g && cd packages/shared-utils && tsc --project tsconfig.json && cd ../travel-cms && tsc --project tsconfig.json",
+    "build": "cd packages/shared-utils && pnpm exec tsc --project tsconfig.json && cd ../travel-cms && pnpm exec tsc --project tsconfig.json",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
