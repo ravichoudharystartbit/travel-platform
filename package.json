@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "pnpm --filter=@travel-platform/shared-utils run build && pnpm --filter=travel-cms run build",
-    "dev": "turbo run dev --parallel",
+    "build": "pnpm --filter=@travel-platform/shared-utils run build && pnpm --filter=travel-cms run build",    "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "echo Skipping husky install in CI"
