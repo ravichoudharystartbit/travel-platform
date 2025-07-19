@@ -1,5 +1,5 @@
 {
     "buildCommand": "pnpm run build",
-    "outputDirectory": "sites/travel-cms/.next",
+    "outputDirectory": "packages/travel-cms/.next", 
     "installCommand": "pnpm install"
   }
