@@ -1,47 +1,40 @@
-import { buildConfig } from 'payload/config';
-import { postgresAdapter } from '@payloadcms/db-postgres';
-import { slateEditor } from '@payloadcms/richtext-slate';
-import { webpackBundler } from '@payloadcms/bundler-webpack';
+import express from 'express';
+import payload from 'payload';
+import { config } from 'dotenv';
 
-export default buildConfig({
-  admin: {
-    user: 'users',
-    bundler: webpackBundler(),
-  },
-  editor: slateEditor({}),
-  collections: [
-    // Your collections will go here
-    {
-      slug: 'users',
-      auth: true,
-      fields: [
-        {
-          name: 'name',
-          type: 'text',
-        },
-      ],
-    },
-    {
-      slug: 'pages',
-      fields: [
-        {
-          name: 'title',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'content',
-          type: 'richText',
-        },
-      ],
-    },
-  ],
-  db: postgresAdapter({
-    pool: {
-      connectionString: process.env.DATABASE_URI,
-    },
-  }),
-  typescript: {
-    outputFile: './types/generated-types.ts',
-  },
+// Load environment variables
+config({
+  path: '../../../.env',
 });
+
+require('dotenv').config();
+
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+const start = async () => {
+  try {
+    // Initialize Payload CMS
+    await payload.init({
+      secret: process.env.PAYLOAD_SECRET || 'dev-secret',
+      express: app,
+      onInit: async () => {
+        payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
+      },
+    });
+
+    // Add your own express routes here
+    app.get('/', (_, res) => {
+      res.redirect('/admin');
+    });
+
+    app.listen(PORT, () => {
+      payload.logger.info(`Server is running on port ${PORT}`);
+    });
+  } catch (err) {
+    console.error('Error starting server:', err);
+    process.exit(1);
+  }
+};
+
+start();
