@@ -45,7 +45,7 @@ importers:
   packages/shared-utils:
     dependencies:
       next:
-        specifier: ^15.1.1
+        specifier: '>=14.0.0'
         version: 15.4.2(react-dom@19.1.0)(react@19.1.0)
       react:
         specifier: ^19.0.0
@@ -54,6 +54,9 @@ importers:
       '@types/react':
         specifier: ^18
         version: 18.3.23
+      typescript:
+        specifier: ^5.3.0
+        version: 5.8.3
 
   packages/travel-cms:
     dependencies:
