@@ -1,8 +1,20 @@
 {
     "buildCommand": "pnpm run build",
-    "outputDirectory": "packages/travel-cms/dist", 
     "installCommand": "pnpm install",
+    "functions": {
+      "api/payload.js": {
+        "runtime": "nodejs18.x"
+      }
+    },
     "rewrites": [
+      {
+        "source": "/admin(.*)",
+        "destination": "/api/payload"
+      },
+      {
+        "source": "/api(.*)",
+        "destination": "/api/payload"
+      },
       {
         "source": "/(.*)",
         "destination": "/api/payload"

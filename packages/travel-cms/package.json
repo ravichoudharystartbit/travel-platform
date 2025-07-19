@@ -2,8 +2,8 @@
   "name": "@travel-platform/travel-cms",
   "version": "0.1.0",
   "private": true,
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/server.js",
+  "types": "dist/server.d.ts",
   "files": [
     "dist",
     "src"
