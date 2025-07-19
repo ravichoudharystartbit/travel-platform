@@ -55,7 +55,7 @@ importers:
         specifier: ^18
         version: 18.3.23
       typescript:
-        specifier: ^5
+        specifier: ^5.0.0
         version: 5.8.3
 
   packages/travel-cms:
