@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "cd packages/shared-utils && pnpm install && pnpm build && cd ../.. && pnpm -r build",
+    "build": "npm install -g typescript && cd packages/shared-utils && pnpm install && pnpm build && cd ../.. && pnpm -r build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
