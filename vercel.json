@@ -1,10 +1,11 @@
 {
     "buildCommand": "pnpm run build",
     "installCommand": "pnpm install",
-    "framework": null,
-    "outputDirectory": ".",
     "functions": {
       "api/payload.js": {
+        "runtime": "nodejs18.x"
+      },
+      "api/test.js": {
         "runtime": "nodejs18.x"
       }
     },
