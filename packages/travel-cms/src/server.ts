@@ -2,6 +2,7 @@
 import { getPayload } from 'payload';
 import { config } from 'dotenv';
 import { seed } from './seed';
+import { postgresAdapter } from '@payloadcms/db-postgres';
 
 // Load environment variables
 config({
@@ -13,12 +14,17 @@ const PORT = process.env.PORT || 3000;
 
 const start = async () => {
   try {
-    // Initialize Payload
+    // Initialize Payload with PostgreSQL
     const payload = await getPayload({
       secret: process.env.PAYLOAD_SECRET || 'dev-secret',
       express: app,
+      db: postgresAdapter({
+        pool: {
+          connectionString: process.env.DATABASE_URI,
+        },
+      }),
       onInit: async (payload) => {
-        payload.logger.info(Payload Admin URL: \);
+        payload.logger.info(Payload Admin URL: );
       },
     });
 
@@ -34,7 +40,7 @@ const start = async () => {
     }
 
     app.listen(PORT, () => {
-      payload.logger.info(Server is running on port \);
+      payload.logger.info(Server is running on port );
     });
   } catch (err) {
     console.error('Error starting server:', err);
