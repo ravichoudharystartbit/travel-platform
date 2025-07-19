@@ -1,20 +1,24 @@
-// Vercel serverless function for Payload CMS
-const payload = require('payload');
+// Alternative Payload CMS serverless approach
+const express = require('express');
+
+let app;
 
 module.exports = async (req, res) => {
-  // Initialize Payload if not already done
-  if (!payload.isInitialized) {
-    await payload.init({
-      secret: process.env.PAYLOAD_SECRET,
-      mongoURL: process.env.DATABASE_URI,
-      express: false, // Important for serverless
-      onInit: () => {
-        console.log('Payload initialized successfully');
-      },
-    });
+  if (!app) {
+    // Import your built server
+    try {
+      const serverModule = require('../packages/travel-cms/dist/server');
+      app = typeof serverModule === 'function' ? serverModule() : serverModule.default || serverModule;
+    } catch (error) {
+      console.error('Failed to load server:', error);
+      return res.status(500).json({ error: 'Failed to initialize server', details: error.message });
+    }
   }
 
-  // Get the handler from Payload
-  const handler = await payload.getRequestHandler();
-  return handler(req, res);
+  // Handle the request
+  if (app && typeof app === 'function') {
+    return app(req, res);
+  } else {
+    return res.status(500).json({ error: 'Server not properly initialized' });
+  }
 };
