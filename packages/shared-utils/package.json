@@ -7,7 +7,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsc --watch",
-    "build": "npx tsc",
+    "build": "node -e \"require(\\\"typescript\\\").createProgram([\\\"src/**/*.ts\\\"], {outDir: \\\"dist\\\", rootDir: \\\"src\\\"}).emit()\"",
     "clean": "rm -rf dist",
     "lint": "eslint src --ext .ts,.tsx"
   },
