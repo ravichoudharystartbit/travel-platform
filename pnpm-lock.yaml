@@ -50,13 +50,13 @@ importers:
       react:
         specifier: '>=18.0.0'
         version: 19.1.0
-      typescript:
-        specifier: ^5.0.0
-        version: 5.8.3
     devDependencies:
       '@types/react':
         specifier: ^18
         version: 18.3.23
+      typescript:
+        specifier: ^5.8.3
+        version: 5.8.3
 
   packages/travel-cms:
     dependencies:
