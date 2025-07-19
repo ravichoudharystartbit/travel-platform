@@ -1,4 +1,4 @@
-import { CollectionConfig } from 'payload/types';
+﻿import { CollectionConfig } from 'payload/types';
 
 export const Media: CollectionConfig = {
   slug: 'media',
@@ -16,19 +16,19 @@ export const Media: CollectionConfig = {
         name: 'thumbnail',
         width: 400,
         height: 300,
-        position: 'centre',
+        position: 'center',
       },
       {
         name: 'card',
         width: 768,
         height: 1024,
-        position: 'centre',
+        position: 'center',
       },
       {
         name: 'desktop',
         width: 1920,
         height: 1080,
-        position: 'centre',
+        position: 'center',
       },
     ],
     adminThumbnail: 'thumbnail',
@@ -45,6 +45,7 @@ export const Media: CollectionConfig = {
       type: 'richText',
       admin: {
         elements: ['link'],
+        leaves: ['bold', 'italic', 'underline'],
       },
     },
   ],

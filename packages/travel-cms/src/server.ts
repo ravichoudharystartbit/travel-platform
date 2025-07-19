@@ -1,4 +1,4 @@
-import express from 'express';
+﻿import express from 'express';
 import { getPayload } from 'payload';
 import { config } from 'dotenv';
 import { seed } from './seed';
@@ -15,9 +15,10 @@ const start = async () => {
   try {
     // Initialize Payload
     const payload = await getPayload({
+      secret: process.env.PAYLOAD_SECRET || 'dev-secret',
       express: app,
       onInit: async (payload) => {
-        payload.logger.info(`Payload Admin URL: ${payload.getAdminURL()}`);
+        payload.logger.info(Payload Admin URL: \);
       },
     });
 
@@ -33,7 +34,7 @@ const start = async () => {
     }
 
     app.listen(PORT, () => {
-      payload.logger.info(`Server is running on port ${PORT}`);
+      payload.logger.info(Server is running on port \);
     });
   } catch (err) {
     console.error('Error starting server:', err);
